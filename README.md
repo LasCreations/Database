@@ -1,2 +1,2 @@
 # Database
-Creating a inventory management system for the Heart Foundation of Jamaica
+Creating a Centralized Database for the Heart Foundation of Jamaica
