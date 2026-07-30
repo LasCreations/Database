@@ -17,6 +17,7 @@ public class PersonController {
 
     //Post one entry
     @PostMapping("/addPerson")
+    @CrossOrigin("*")
     public ResponseEntity<Person> addPerson(@RequestBody Person person){
         Person response = personRepo.save(person);
         return ResponseEntity.ok(response);
