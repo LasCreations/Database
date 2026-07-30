@@ -3,6 +3,7 @@ package com.postgresql.centralDB;
 
 import com.postgresql.centralDB.model.Person;
 import com.postgresql.centralDB.repo.PersonRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
+@CrossOrigin("*")
 public class PersonController {
 
     @Autowired
