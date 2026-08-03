@@ -1,0 +1,61 @@
+.participants-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: sans-serif;
+}
+
+.participants-title {
+    font-size: 1.8rem;
+    margin-bottom: 4px;
+    color: #1a1a2e;
+}
+
+.participants-count {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.participants-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.participants-table thead {
+    background: #1a1a2e;
+    color: #fff;
+}
+
+.participants-table th,
+.participants-table td {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.participants-table tbody tr:nth-child(even) {
+    background: #f5f7fa;
+}
+
+.participants-table tbody tr:hover {
+    background: #e8f0fe;
+    transition: background 0.2s;
+}
+
+.status-msg {
+    text-align: center;
+    color: #888;
+    padding: 20px;
+}
+
+.status-msg.error {
+    color: #e74c3c;
+}

@@ -1,34 +1,73 @@
-import React from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
-import "./Header.css";
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, NavDropdown } from 'react-bootstrap';
+import "./Header.css";
 
 const Header = () => {
+    const [eccOpen, setEccOpen] = useState(false);
+
     return (
-        <>
-            <Navbar bg="blue" >
-                <Container>
-                    <Navbar.Brand href="/">HyperSync DB</Navbar.Brand>
-                    <Nav className="ml-auto">
-                        <NavDropdown title="ECC" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Courses</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">
-                                Students
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Upload</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">
-                                Delete
-                            </NavDropdown.Item>
-                        </NavDropdown>
-                        <Nav.Link as={Link} to="/sponsors" className="nav-link">Sponsors</Nav.Link>
-                        <Nav.Link as={Link} to="/events" className="nav-link">Events</Nav.Link>
-                    </Nav>
-                </Container>
-            </Navbar>
-        </>
-    )
-}
+        <header className="header">
+            <div className="header-container">
+                <Link to="/" className="header-brand">
+                    ⚡ HyperSync DB
+                </Link>
+
+                <nav className="header-nav">
+                    <div
+                        className="dropdown"
+                        onMouseEnter={() => setEccOpen(true)}
+                        onMouseLeave={() => setEccOpen(false)}
+                    >
+                        {/* Added onClick toggle for mobile/accessibility support */}
+                        <button 
+                            className="nav-item dropdown-toggle"
+                            onClick={() => setEccOpen((prev) => !prev)}
+                            type="button"
+                        >
+                            ECC <span className="chevron">▾</span>
+                        </button>
+
+                        {eccOpen && (
+                            <div className="dropdown-menu">
+                                <Link 
+                                    to="/registration" 
+                                    className="dropdown-item" 
+                                    onClick={() => setEccOpen(false)}
+                                >
+                                    📋 Registration
+                                </Link>
+                                <Link 
+                                    to="/participants" 
+                                    className="dropdown-item" 
+                                    onClick={() => setEccOpen(false)}
+                                >
+                                    👥 Participants
+                                </Link>
+                                <Link 
+                                    to="/upload" 
+                                    className="dropdown-item" 
+                                    onClick={() => setEccOpen(false)}
+                                >
+                                    📤 Upload
+                                </Link>
+                                <div className="dropdown-divider" />
+                                <Link 
+                                    to="/delete" 
+                                    className="dropdown-item danger" 
+                                    onClick={() => setEccOpen(false)}
+                                >
+                                    🗑️ Delete
+                                </Link>
+                            </div>
+                        )}
+                    </div>
+
+                    <Link to="/sponsors" className="nav-item">Sponsors</Link>
+                    <Link to="/events" className="nav-item">Events</Link>
+                </nav>
+            </div>
+        </header>
+    );
+};
 
 export default Header;
