@@ -3,21 +3,22 @@ import Header from './pages/header/Header';
 import { Route, Routes } from 'react-router-dom';
 import Dashboard from './pages/dashboard/Dashboard';
 import NotFound from './pages/error/NotFound';
-import PostStudent from './pages/ecc/student/PostStudent';
-import GetAllParticipants from './pages/ecc/student/GetAllParticipants';
+import PostParticipant from './pages/ecc/registration/participant/PostParticipant';
+import GetAllParticipants from './pages/ecc/registration/participant/GetAllParticipants';
+import UpdateParticipant from './pages/ecc/registration/participant/UpdateParticipant';
 
 function App() {
+
   return (
     <>
       <Header />
       <Routes>
         <Route  path="/" element={<Dashboard />} />
-        <Route  path="/registration" element={<PostStudent />} />
+        <Route  path="/registration" element={<PostParticipant />} />
         <Route  path="/participants" element={<GetAllParticipants />} />
+        <Route  path="/participant/UpdateParticipant/:id" element={<UpdateParticipant />} />
         <Route  path="*" element={<NotFound />} />
-        
       </Routes>
-
     </>
   );
 }

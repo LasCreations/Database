@@ -1,87 +1,92 @@
-.header {
+.hdr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    height: 60px;
     background: #1a1a2e;
-    padding: 0 24px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-.header-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 60px;
-}
-
-.header-brand {
-    font-size: 1.3rem;
-    font-weight: 700;
+.hdr-brand {
     color: #fff;
+    font-weight: 700;
+    font-size: 1.2rem;
     text-decoration: none;
-    letter-spacing: 0.5px;
-    transition: opacity 0.2s;
 }
 
-.header-brand:hover {
+.hdr-brand:hover {
     opacity: 0.85;
 }
 
-.header-nav {
+.hdr-nav {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.nav-item {
-    color: #ccc;
-    text-decoration: none;
-    padding: 8px 14px;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    transition: background 0.2s, color 0.2s;
+.hdr-btn {
     background: none;
     border: none;
-    cursor: pointer;
+    color: #ccc;
+    font-size: 0.95rem;
     font-family: inherit;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
 }
 
-.nav-item:hover {
+.hdr-btn:hover {
     background: rgba(255, 255, 255, 0.1);
     color: #fff;
 }
 
-/* Ensure the parent wrapper acts as the anchor point */
-.dropdown {
-  position: relative;
-  display: inline-block;
+.hdr-dropdown {
+    position: relative;
 }
 
-/* Position the menu directly below the button */
-.dropdown-menu {
-  position: absolute;
-  top: 100%; /* Positions it directly under the toggle button */
-  left: 0;
-  z-index: 1000; /* Ensures it stays on top of other layout elements */
-  min-width: 180px;
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  padding: 8px 0;
-  display: flex;
-  flex-direction: column;
+.hdr-dropdown-menu {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    min-width: 160px;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    z-index: 9999;
 }
 
-.dropdown-item {
-  padding: 8px 16px;
-  color: #333;
-  text-decoration: none;
-  display: block;
+.hdr-dropdown-item {
+    padding: 9px 14px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: background 0.15s;
 }
 
-.dropdown-item:hover {
-  background-color: #f5f5f5;
+.hdr-dropdown-item:hover {
+    background: #f0f2f5;
+    color: #1a1a2e;
+}
+
+.hdr-danger {
+    color: #e74c3c;
+}
+
+.hdr-danger:hover {
+    background: #fdecea;
+}
+
+.hdr-divider {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 4px 0;
 }

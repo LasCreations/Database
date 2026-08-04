@@ -1,71 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import "./Header.css";
 
 const Header = () => {
     const [eccOpen, setEccOpen] = useState(false);
+    const dropdownRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+                setEccOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
 
     return (
-        <header className="header">
-            <div className="header-container">
-                <Link to="/" className="header-brand">
-                    ⚡ HyperSync DB
-                </Link>
+        <header className="hdr">
+            <Link to="/" className="hdr-brand">⚡ HyperSync DB</Link>
 
-                <nav className="header-nav">
-                    <div
-                        className="dropdown"
-                        onMouseEnter={() => setEccOpen(true)}
-                        onMouseLeave={() => setEccOpen(false)}
-                    >
-                        {/* Added onClick toggle for mobile/accessibility support */}
-                        <button 
-                            className="nav-item dropdown-toggle"
-                            onClick={() => setEccOpen((prev) => !prev)}
-                            type="button"
-                        >
-                            ECC <span className="chevron">▾</span>
-                        </button>
-
-                        {eccOpen && (
-                            <div className="dropdown-menu">
-                                <Link 
-                                    to="/registration" 
-                                    className="dropdown-item" 
-                                    onClick={() => setEccOpen(false)}
-                                >
-                                    📋 Registration
-                                </Link>
-                                <Link 
-                                    to="/participants" 
-                                    className="dropdown-item" 
-                                    onClick={() => setEccOpen(false)}
-                                >
-                                    👥 Participants
-                                </Link>
-                                <Link 
-                                    to="/upload" 
-                                    className="dropdown-item" 
-                                    onClick={() => setEccOpen(false)}
-                                >
-                                    📤 Upload
-                                </Link>
-                                <div className="dropdown-divider" />
-                                <Link 
-                                    to="/delete" 
-                                    className="dropdown-item danger" 
-                                    onClick={() => setEccOpen(false)}
-                                >
-                                    🗑️ Delete
-                                </Link>
-                            </div>
-                        )}
-                    </div>
-
-                    <Link to="/sponsors" className="nav-item">Sponsors</Link>
-                    <Link to="/events" className="nav-item">Events</Link>
-                </nav>
-            </div>
+            <nav className="hdr-nav">
+                <div className="hdr-dropdown" ref={dropdownRef}>
+                    <button className="hdr-btn" onClick={() => setEccOpen(o => !o)}>
+                        ECC {eccOpen ? "▴" : "▾"}
+                    </button>
+                    {eccOpen && (
+                        <div className="hdr-dropdown-menu">
+                            <Link to="/registration" className="hdr-dropdown-item" onClick={() => setEccOpen(false)}>Registration</Link>
+                            <Link to="/participants" className="hdr-dropdown-item" onClick={() => setEccOpen(false)}>Participants</Link>
+                            <Link to="/upload" className="hdr-dropdown-item" onClick={() => setEccOpen(false)}>Upload</Link>
+                            <hr className="hdr-divider" />
+                            <Link to="/delete" className="hdr-dropdown-item hdr-danger" onClick={() => setEccOpen(false)}>Delete</Link>
+                        </div>
+                    )}
+                </div>
+                <Link to="/sponsors" className="hdr-btn">Sponsors</Link>
+                <Link to="/events" className="hdr-btn">Events</Link>
+            </nav>
         </header>
     );
 };
